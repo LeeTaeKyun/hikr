@@ -1,0 +1,18 @@
+<Page ux:Class="EditHikePage">
+		<Router ux:Dependency="router"/>
+	    	<JavaScript File="EditHikePage.js"/>
+    	<ScrollView>
+		    <StackPanel>
+		    	<Text>{name}</Text>
+		    	<TextBox Value="{name}"></TextBox>
+		    		<Text>Location :</Text>
+		    	<TextBox Value="{location}"></TextBox>
+		    		<Text>Distance(km) :</Text>
+		    	<TextBox Value="{distance}" InputHint="Decimal"></TextBox>
+		    		<Text>Rating : </Text>
+		    	<TextBox Value="{rating}"></TextBox>
+		    		<Text>Comments : </Text>
+		    	<TextBox Value="{comments}" TextWrapping="Wrap"></TextBox>
+		    </StackPanel>
+	   	</ScrollView>
+</Page>

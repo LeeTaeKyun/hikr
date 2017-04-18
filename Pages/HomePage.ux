@@ -4,7 +4,7 @@
 	<ScrollView>
 		<StackPanel>
 			<Each Items="{hikes}" >
-				<Button Text="{name}" Clicked="{goToHike}"/>
+
 			</Each>
 		</StackPanel>
 	</ScrollView>

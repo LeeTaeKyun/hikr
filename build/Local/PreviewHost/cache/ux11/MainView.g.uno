@@ -1,9 +1,55 @@
 [Uno.Compiler.UxGenerated]
 public partial class MainView: Fuse.App
 {
-    global::Uno.UX.Property<string> temp_Value_inst;
+    [Uno.Compiler.UxGenerated]
+    public partial class Template: Uno.UX.Template
+    {
+        [Uno.WeakReference] internal readonly MainView __parent;
+        [Uno.WeakReference] internal readonly MainView __parentInstance;
+        public Template(MainView parent, MainView parentInstance): base("home", false)
+        {
+            __parent = parent;
+            __parentInstance = parentInstance;
+        }
+        static Template()
+        {
+        }
+        public override object New()
+        {
+            var __self = new global::HomePage(__parent.router);
+            __self.Name = __selector0;
+            return __self;
+        }
+        static global::Uno.UX.Selector __selector0 = "home";
+    }
+    [Uno.Compiler.UxGenerated]
+    public partial class Template1: Uno.UX.Template
+    {
+        [Uno.WeakReference] internal readonly MainView __parent;
+        [Uno.WeakReference] internal readonly MainView __parentInstance;
+        public Template1(MainView parent, MainView parentInstance): base("editHike", false)
+        {
+            __parent = parent;
+            __parentInstance = parentInstance;
+        }
+        static Template1()
+        {
+        }
+        public override object New()
+        {
+            var __self = new global::EditHikePage(__parent.router);
+            __self.Name = __selector0;
+            return __self;
+        }
+        static global::Uno.UX.Selector __selector0 = "editHike";
+    }
+    global::Uno.UX.Property<string> temp_Text_inst;
+    internal global::Fuse.Navigation.Router router;
+    internal global::Fuse.Reactive.EventBinding temp_eb0;
     global::Uno.UX.NameTable __g_nametable;
     static string[] __g_static_nametable = new string[] {
+        "router",
+        "temp_eb0"
     };
     static MainView()
     {
@@ -127,23 +173,33 @@ public partial class MainView: Fuse.App
         var temp14 = new global::FuseJS.Bundle();
         var temp15 = new global::FuseJS.FileReaderImpl();
         var temp16 = new global::FuseJS.UserEvents();
-        __g_nametable = new global::Uno.UX.NameTable(null, __g_static_nametable);
-        var temp = new global::Fuse.Controls.Text();
-        temp_Value_inst = new hikr_FuseControlsTextControl_Value_Property(temp, __selector0);
+        var temp = new global::Fuse.Controls.Button();
+        temp_Text_inst = new hikr_FuseControlsButtonBase_Text_Property(temp, __selector0);
         var temp17 = new global::Fuse.Reactive.Data("name");
-        var temp18 = new global::Fuse.Controls.ClientPanel();
-        var temp19 = new global::Fuse.Reactive.JavaScript(__g_nametable);
-        var temp20 = new global::Fuse.Controls.StackPanel();
-        var temp21 = new global::Fuse.Reactive.DataBinding(temp_Value_inst, temp17, __g_nametable, Fuse.Reactive.BindingMode.Default);
-        temp18.Children.Add(temp19);
-        temp18.Children.Add(temp20);
-        temp19.Code = "\n    \t\tvar name = \"Tricky Trails!!\";\n\n    \t\tmodule.exports = {\n    \t\t\tname: name;\n    \t\t};\n    \t";
-        temp19.LineNumber = 4;
-        temp19.FileName = "MainView.ux";
+        __g_nametable = new global::Uno.UX.NameTable(null, __g_static_nametable);
+        var temp18 = new global::Fuse.Reactive.Data("goToHike");
+        router = new global::Fuse.Navigation.Router();
+        var temp19 = new global::Fuse.Controls.ClientPanel();
+        var temp20 = new global::Fuse.Controls.Navigator();
+        var home = new Template(this, this);
+        var editHike = new Template1(this, this);
+        var temp21 = new global::Fuse.Reactive.DataBinding(temp_Text_inst, temp17, __g_nametable, Fuse.Reactive.BindingMode.Default);
+        temp_eb0 = new global::Fuse.Reactive.EventBinding(temp18, __g_nametable);
+        router.Name = __selector1;
+        temp19.Children.Add(temp20);
+        temp20.DefaultPath = "home";
         temp20.Children.Add(temp);
+        temp20.Templates.Add(home);
+        temp20.Templates.Add(editHike);
+        global::Fuse.Gestures.Clicked.AddHandler(temp, temp_eb0.OnEvent);
         temp.Bindings.Add(temp21);
+        temp.Bindings.Add(temp_eb0);
         __g_nametable.This = this;
-        this.Children.Add(temp18);
+        __g_nametable.Objects.Add(router);
+        __g_nametable.Objects.Add(temp_eb0);
+        this.Children.Add(router);
+        this.Children.Add(temp19);
     }
-    static global::Uno.UX.Selector __selector0 = "Value";
+    static global::Uno.UX.Selector __selector0 = "Text";
+    static global::Uno.UX.Selector __selector1 = "router";
 }
